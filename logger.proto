@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option go_package = "go-grpc/logger";
+
+// Client message
+message LogEntry {
+    string app_name = 1;
+    string message = 2;
+}
+
+// Single Server message
+message SingleLogResponse {
+    int32 number_of_written_chars = 1;
+}
+
+// Multiple Server Messages
+message BatchLogResponse {
+    int32 number_of_written_messages = 1;
+    int32 number_of_written_chars = 2;
+}
+
+message App {
+    string name = 1;
+}
+
+service Logger {
+    rpc SingleLogEntry(LogEntry) returns (SingleLogResponse);
+    rpc BatchLogEntry(stream LogEntry) returns (BatchLogResponse);
+    rpc GetLogsByApp(App) returns (stream LogEntry);
+}

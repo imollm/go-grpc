@@ -65,3 +65,5 @@ localhost:8089 Logger.GetLogsByApp
 ```
 
 ![](/doc/grpcurl.png)
+
+Special thanks to @ossan-dev to the workshop in Nerdearla 2023
